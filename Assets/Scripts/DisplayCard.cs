@@ -9,13 +9,28 @@ public class DisplayCard : MonoBehaviour
     public Text costText;
     public Text powerText;
     public Text descriptionText;
+    public Image artImage; // This should be a UI Image to display the sprite
 
     void Start()
     {
         // Check if displayId is valid
         if (displayId >= 0 && displayId < CardDatabase.cardList.Count)
         {
-            UpdateCardDisplay(CardDatabase.cardList[displayId]);
+            // Get the card from the CardDatabase
+            Card card = CardDatabase.cardList[displayId];
+
+            // Update the card display information
+            UpdateCardDisplay(card);
+
+            // Assign the sprite to the artImage if it's not null
+            if (card.spriteImage != null && artImage != null)
+            {
+                artImage.sprite = card.spriteImage;
+            }
+            else
+            {
+                Debug.LogError("Card image is missing or artImage is not assigned.");
+            }
         }
         else
         {
