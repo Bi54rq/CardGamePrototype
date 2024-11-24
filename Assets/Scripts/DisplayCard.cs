@@ -11,6 +11,9 @@ public class DisplayCard : MonoBehaviour
     public Text descriptionText;
     public Image artImage; // This should be a UI Image to display the sprite
 
+    public bool cardBack;
+    public static bool staticCardBack;
+
     void Start()
     {
         // Check if displayId is valid
@@ -36,6 +39,10 @@ public class DisplayCard : MonoBehaviour
         {
             Debug.LogError("Display ID is out of range.");
         }
+    }
+    void Update()
+    {
+        staticCardBack = cardBack;
     }
 
     void UpdateCardDisplay(Card card)
