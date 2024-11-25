@@ -30,22 +30,22 @@ public class PlayerDeck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(deckSize < 17)
+        if(deckSize < 7)
         {
             cardInDeck1.SetActive(false);
             
         }
-        if (deckSize < 13)
+        if (deckSize < 5)
         {
             cardInDeck2.SetActive(false);
             
         }
-        if (deckSize < 7)
+        if (deckSize < 3)
         {
             cardInDeck3.SetActive(false);
             
         }
-        if (deckSize < 3)
+        if (deckSize < 1)
         {
            
             cardInDeck4.SetActive(false);
