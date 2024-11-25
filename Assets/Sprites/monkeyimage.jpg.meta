@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f8864154543d97047adfd6ad15761b95
+guid: 5c43fa62620cae3459ae8903abbcd5f0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6383312658857005041
-    second: lizard_0
+      213: 8125707758591613100
+    second: monkeyimage_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -87,7 +87,7 @@ TextureImporter:
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 10
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lizard_0
+      name: monkeyimage_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 1728
+        width: 474
+        height: 474
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f00f29ef4fae967a0800000000000000
-      internalID: -6383312658857005041
+      spriteID: ca81d73972054c070800000000000000
+      internalID: 8125707758591613100
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      lizard_0: -6383312658857005041
+      monkeyimage_0: 8125707758591613100
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
