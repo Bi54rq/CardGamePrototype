@@ -153,7 +153,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!114 &259022714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,7 +500,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad10607ab3129cf4686a2acc4805b1ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgImage: {fileID: -1985945565065100227, guid: 30736a567ca07cf40bf238b465c8558b, type: 3}
+  bgImage: {fileID: -7124783402704711007, guid: 15b818b7ad32f754a965d1962457602f, type: 3}
+  puzzles: []
+  gamePuzzles: []
   buttons: []
 --- !u!1 &919369637
 GameObject:
@@ -676,7 +678,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 200, y: 200}
+  m_CellSize: {x: 200, y: 320}
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 1
   m_ConstraintCount: 4
