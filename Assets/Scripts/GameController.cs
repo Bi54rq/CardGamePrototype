@@ -24,6 +24,9 @@ public class GameController : MonoBehaviour
 
     private string firstGuessPuzzle, secondGuessPuzzle;
 
+    // Reference to the SceneLoader to load scenes
+    public SceneLoading sceneLoading;
+
     void Awake()
     {
         puzzles = Resources.LoadAll<Sprite>("Sprites/Button");
@@ -149,6 +152,9 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("Completed");
             Debug.Log("It took you " + countGuesses + " guess(es) to finish");
+
+            // Use the SceneLoader to load the Victory scene
+            sceneLoading.LoadVictoryScene();
         }
     }
 
