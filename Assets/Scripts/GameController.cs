@@ -24,6 +24,16 @@ public class GameController : MonoBehaviour
 
     private string firstGuessPuzzle, secondGuessPuzzle;
 
+    public Text turnText; // Reference to the UI Text element showing whose turn it is
+    public Text player1ScoreText; // Reference to the UI Text element showing Player 1's score
+    public Text player2ScoreText; // Reference to the UI Text element showing Player 2's score
+    public Text winnerText; // Reference to the UI Text element showing the winner
+
+    private int currentPlayer = 1; // 1 = Player 1, 2 = Player 2
+
+    private int player1Score = 0; // Score for Player 1
+    private int player2Score = 0; // Score for Player 2
+
     // Reference to the SceneLoader to load scenes
     public SceneLoading sceneLoading;
 
@@ -38,7 +48,10 @@ public class GameController : MonoBehaviour
         AddListeners();
         AddGamePuzzles();
         Shuffle(gamePuzzles);
-        gameGuesses = gamePuzzles.Count / 2;
+        gameGuesses = gamePuzzles.Count / 2; // Number of guesses in the game
+
+        UpdateTurnText(); // Display the first player's turn
+        UpdateScores(); // Initialize the scores display
     }
 
     void GetButtons()
@@ -48,7 +61,7 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < objects.Length; i++)
         {
             buttons.Add(objects[i].GetComponent<Button>());
-            buttons[i].image.sprite = bgImage;
+            buttons[i].image.sprite = bgImage;  // Set initial background image
         }
     }
 
@@ -124,6 +137,19 @@ public class GameController : MonoBehaviour
             buttons[firstGuessIndex].image.color = new Color(0, 0, 0, 0);
             buttons[secondGuessIndex].image.color = new Color(0, 0, 0, 0);
 
+            // Update the score for the current player
+            if (currentPlayer == 1)
+            {
+                player1Score++;
+            }
+            else
+            {
+                player2Score++;
+            }
+
+            // Update the score UI
+            UpdateScores();
+
             // Check if the game is finished
             CheckIfTheGameIsFinished();
         }
@@ -138,10 +164,30 @@ public class GameController : MonoBehaviour
             // Reset interactivity for the next pair of guesses
             buttons[firstGuessIndex].interactable = true;
             buttons[secondGuessIndex].interactable = true;
+
+            // Switch turns after a wrong guess
+            SwitchTurn();
         }
 
         // Reset the guess flags
         firstGuess = secondGuess = false;
+    }
+
+    void SwitchTurn()
+    {
+        currentPlayer = (currentPlayer == 1) ? 2 : 1; // Toggle between Player 1 and Player 2
+        UpdateTurnText();
+    }
+
+    void UpdateTurnText()
+    {
+        turnText.text = "Player " + currentPlayer + "'s Turn"; // Update UI text to show current player
+    }
+
+    void UpdateScores()
+    {
+        player1ScoreText.text = "Player 1: " + player1Score; // Update Player 1's score
+        player2ScoreText.text = "Player 2: " + player2Score; // Update Player 2's score
     }
 
     void CheckIfTheGameIsFinished()
@@ -150,11 +196,14 @@ public class GameController : MonoBehaviour
 
         if (countCorrectGuesses == gameGuesses)
         {
-            Debug.Log("Completed");
-            Debug.Log("It took you " + countGuesses + " guess(es) to finish");
+            Debug.Log("Game Finished");
+            // Determine the winner based on the scores
+            string winner = player1Score > player2Score ? "Player 1" : (player2Score > player1Score ? "Player 2" : "Draw");
 
-            // Use the SceneLoader to load the Victory scene
-            sceneLoading.LoadVictoryScene();
+            // Call the LoadVictoryScene() method with the winner's name
+            sceneLoading.LoadVictoryScene(winner);
+
+            Debug.Log("It took you " + countGuesses + " guess(es) to finish");
         }
     }
 
